@@ -57,3 +57,8 @@ reference: https://medium.com/@ajeet214/9-free-weather-apis-for-ai-data-projects
 
 Relying on a single external provider for a core feature is a single point of failure. 
 To design for resilience, I will architect the service to have a primary Weather API provider and a secondary as fallback. If the primary API experiences downtime or timeouts, the application gracefully degrades by switching to the fallback provider without failing the user request.
+
+6) Applied Design Patterns
+
+To ensure maintainability and testability, I avoided the "Fat Model" anti-pattern and applied the following concepts:
+The ForecastService receives its API Client via constructor. This allows for seamless VCR test mocking and effortless swapping of providers. Also,the V1::OpenMeteoClient handles pure HTTP (via Faraday), but it immediately passes the raw JSON to a V1::OpenMeteoParser. This parser translates the external garbage into a pure Ruby Domain Object, our WeatherForecast, preventing external API structures from leaking into the core application logic.
