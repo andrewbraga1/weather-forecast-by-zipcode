@@ -80,6 +80,8 @@ GEM
       mutex_m
       securerandom (>= 0.3)
       tzinfo (~> 2.0)
+    addressable (2.9.2)
+      public_suffix (>= 2.0.2, < 8.0)
     base64 (0.3.0)
     benchmark (0.5.0)
     bigdecimal (4.1.3)
@@ -90,17 +92,34 @@ GEM
     cgi (0.5.2)
     concurrent-ruby (1.3.8)
     connection_pool (2.5.5)
+    crack (1.0.1)
+      bigdecimal
+      rexml
     crass (1.0.8)
+    csv (3.3.7)
     date (3.6.0)
     debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    diff-lcs (1.6.2)
     drb (2.2.3)
     erb (4.0.4.1)
       cgi (>= 0.3.3)
     erubi (1.13.1)
+    faraday (2.15.1)
+      faraday-net_http (>= 2.0, < 3.6)
+      json
+      logger
+    faraday-net_http (3.5.0)
+      net-http (~> 0.5)
+    faraday-retry (2.4.0)
+      faraday (~> 2.0)
+    geocoder (1.8.6)
+      base64 (>= 0.1.0)
+      csv (>= 3.0.0)
     globalid (1.4.0)
       activesupport (>= 6.1)
+    hashdiff (1.2.2)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.3)
@@ -116,6 +135,7 @@ GEM
     jbuilder (2.15.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
+    json (3.1.0)
     logger (1.7.0)
     loofah (2.25.2)
       crass (~> 1.0.2)
@@ -132,6 +152,9 @@ GEM
     minitest (5.26.1)
     msgpack (1.8.7)
     mutex_m (0.3.0)
+    net-http (0.10.0)
+      net-protocol (>= 0.3.0)
+      uri (>= 0.11.1)
     net-imap (0.4.25)
       date
       net-protocol
@@ -151,10 +174,13 @@ GEM
     psych (5.5.0)
       date
       stringio
+    public_suffix (6.0.2)
     puma (8.1.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.8)
+    rack-attack (6.8.0)
+      rack (>= 1.0, < 4)
     rack-session (2.1.2)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -200,6 +226,24 @@ GEM
       tsort
     reline (0.7.0)
       io-console (~> 0.5)
+    rexml (3.4.4)
+    rspec-core (3.13.7)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.9)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (7.1.1)
+      actionpack (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.8)
     securerandom (0.3.2)
     sprockets (4.4.1)
       concurrent-ruby (~> 1.1)
@@ -222,11 +266,17 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uri (1.1.2)
+    vcr (6.4.1)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webmock (3.34.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.8.2)
       base64
       websocket-extensions (>= 0.1.0)
@@ -239,16 +289,23 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  faraday
+  faraday-retry
+  geocoder
   importmap-rails
   jbuilder
   puma (>= 5.0)
+  rack-attack
   rails (~> 7.1.6)
+  rspec-rails
   sprockets-rails
   sqlite3 (>= 1.4)
   stimulus-rails
   turbo-rails
   tzinfo-data
+  vcr
   web-console
+  webmock
 
 RUBY VERSION
    ruby 3.0.3p157
