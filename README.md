@@ -49,6 +49,11 @@ Object geocoding (by street or IP address), reverse geocoding (coordinates to st
 reference: https://rubygems.org/gems/geocoder
 
 B) Weather API options
-
+Open-Meteo, NASA POWER API don't required API keys
 WeatherAPI, OpenWeatherMap
 reference: https://medium.com/@ajeet214/9-free-weather-apis-for-ai-data-projects-6bfc66022e46
+
+5) High Availability & Fault Tolerance
+
+Relying on a single external provider for a core feature is a single point of failure. 
+To design for resilience, I will architect the service to have a primary Weather API provider and a secondary as fallback. If the primary API experiences downtime or timeouts, the application gracefully degrades by switching to the fallback provider without failing the user request.
