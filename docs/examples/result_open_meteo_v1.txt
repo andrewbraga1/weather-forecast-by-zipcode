@@ -1,0 +1,16 @@
+
+drew@drew-Inspiron-5567:~/Documentos/weather-forecast-by-zipcode$ curl "https://api.open-meteo.com/v1/forecast?latitude=-23.5505&longitude=-46.6333&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto"
+{"latitude":-23.514938,"longitude":-46.610504,"generationtime_ms":0.05340576171875,"utc_offset_seconds":-10800,"timezone":"America/Sao_Paulo","timezone_abbreviation":"GMT-3","elevation":758.0,"current_units":{"time":"iso8601","interval":"seconds","temperature_2m":"°C"},"current":{"time":"2026-11-15T20:30","interval":900,"temperature_2m":19.3},"daily_units":{"time":"iso8601","temperature_2m_max":"°C","temperature_2m_min":"°C"},"daily":{"time":["2026-11-15","2026-11-16","2026-11-17","2026-11-18","2026-11-19","2026-11-20","2026-11-21"],"temperature_2m_max":[28.7,24.9,27.4,29.4,29.8,31.2,31.7],"temperature_2m_min":[17.5,18.1,18.1,18.1,19.2,20.2,19.4]}}
+
+drew@drew-Inspiron-5567:~/Documentos/weather-forecast-by-zipcode$ rails c
+Loading development environment (Rails 7.1.6)
+irb(main):001> client = Weather::V1::OpenMeteoClient.new
+irb(main):002> forecast = client.fetch_forecast(latitude: -23.5505, longitude: -46.6333)
+irb(main):003> 
+irb(main):004> puts "Current: #{forecast.current_temperature}"
+irb(main):005> puts "Max: #{forecast.high_temperature}"
+irb(main):006> puts "Min: #{forecast.low_temperature}"
+Current: 19.3
+Max: 28.7
+Min: 17.5
+=> nil
