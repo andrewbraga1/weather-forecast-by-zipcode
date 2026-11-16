@@ -39,7 +39,7 @@ gem "jbuilder"
 gem "faraday", "~> 2.12"
 gem "faraday-retry"
 
-# Rate limiting
+# Rate limiting (TODO task)
 gem 'rack-attack'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

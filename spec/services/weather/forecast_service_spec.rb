@@ -19,6 +19,9 @@ RSpec.describe Weather::ForecastService do
         expect(result[:data]).to have_key(:current_temperature)
         expect(result[:data]).to have_key(:high_temperature)
         expect(result[:data]).to have_key(:low_temperature)
+        expect(result[:data][:extended_forecast]).to be_an(Array)
+        expect(result[:data][:extended_forecast].size).to eq(3)
+        expect(result[:data][:extended_forecast].first).to include(:date, :high_temperature, :low_temperature)
       end
     end
 

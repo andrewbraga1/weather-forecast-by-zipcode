@@ -21,6 +21,7 @@ RSpec.describe "Weather Acceptance", type: :request do
         
         expect(response.body).to include("Current Temperature")
         expect(response.body).to include("Live Data")
+        expect(response.body).to include("Next 3 Days Forecast")
         expect(response.body).not_to include("Cached")
       end
     end

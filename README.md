@@ -6,7 +6,7 @@
 [![Determinism](https://img.shields.io/badge/VCR%20%26%20WebMock-Offline_Certified-blue.svg)]()
 [![Zero--Config](https://img.shields.io/badge/Setup-Zero_API_Keys-success.svg)]()
 
-A high-performance, resilient weather forecasting web service built with **Ruby on Rails**. This application takes a US Zip Code or address, queries geocoding and meteorological data, and displays real-time weather metrics (current, high, and low temperatures) backed by a multi-tier caching strategy.
+A high-performance, resilient weather forecasting web service built with **Ruby on Rails**. This application takes a US Zip Code or address, queries geocoding and meteorological data, and displays real-time weather metrics (current, high, low, and 3-day extended forecasts) backed by a multi-tier caching strategy.
 
 ---
 
@@ -199,3 +199,4 @@ In a distributed, mission-critical production environment, the following extensi
 1. **Distributed Caching Layer:** Transition from local `MemoryStore` to an HA **Redis Sentinel** cluster (`kredis` / `redis-cache-store`), utilizing cache namespace isolation.
 2. **Circuit Breaker & Fallback Provider:** Integrate `stoplight` or `circuitbox` around the `ForecastService` to dynamically trip into a secondary provider (e.g., WeatherAPI) upon elevated error rates.
 3. **Stale-While-Revalidate (SWR):** Implement dual-TTL caching (`fresh_until = 30.minutes`, `stale_until = 24.hours`) to serve stale forecasts with a `⚠️ Stale Cache (API Offline)` badge during catastrophic upstream downtime.
+4. **Inbound Rate Limiting & Abuse Prevention:** ToDo task
