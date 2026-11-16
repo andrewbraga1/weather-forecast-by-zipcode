@@ -199,4 +199,4 @@ In a distributed, mission-critical production environment, the following extensi
 1. **Distributed Caching Layer:** Transition from local `MemoryStore` to an HA **Redis Sentinel** cluster (`kredis` / `redis-cache-store`), utilizing cache namespace isolation.
 2. **Circuit Breaker & Fallback Provider:** Integrate `stoplight` or `circuitbox` around the `ForecastService` to dynamically trip into a secondary provider (e.g., WeatherAPI) upon elevated error rates.
 3. **Stale-While-Revalidate (SWR):** Implement dual-TTL caching (`fresh_until = 30.minutes`, `stale_until = 24.hours`) to serve stale forecasts with a `⚠️ Stale Cache (API Offline)` badge during catastrophic upstream downtime.
-4. **Inbound Rate Limiting & Abuse Prevention:** ToDo task
+4. **Inbound Rate Limiting & Abuse Prevention:** Activate and configure `Rack::Attack` with client IP throttling rules (e.g., 20 queries/min on `/weather`), mitigating aggressive scraping, DoS vectors, and malicious cache-miss flooding.
