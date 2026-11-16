@@ -58,5 +58,21 @@ RSpec.describe Weather::ForecastService do
         expect(result[:error]).to eq("Zip code is required")
       end
     end
+
+    context 'when providing a full address containing a zip code' do
+      let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) }
+
+      before do
+        allow(Rails).to receive(:cache).and_return(memory_store)
+        Rails.cache.clear
+      end
+
+      it 'extracts the zip code correctly even when street numbers have 5 digits' do
+        result = described_class.new("10001 Main St, Los Angeles, CA 90210").call
+
+        expect(result[:success]).to be true
+        expect(result[:data][:current_temperature]).to be_a(Numeric)
+      end
+    end
   end
 end

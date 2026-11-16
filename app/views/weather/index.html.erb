@@ -2,13 +2,13 @@
   
   <h1>Weather Forecast</h1>
   <!-- Fix 1: Capital Z for the test -->
-  <p style="color: #666;">Enter a Zip code to check the current temperature and daily limits.</p>
+  <p style="color: #666;">Enter an address or Zip code to check the current temperature and daily limits.</p>
 
   <form action="<%= weather_path %>" method="get" style="margin-bottom: 30px;">
     <input 
       type="text" 
       name="zip_code" 
-      placeholder="e.g. 90210" 
+      placeholder="e.g. 90210 or 10001 Main St, Los Angeles, CA 90210" 
       value="<%= params[:zip_code] %>" 
       style="padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px;"
     >

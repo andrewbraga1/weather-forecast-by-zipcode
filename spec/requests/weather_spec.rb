@@ -57,5 +57,15 @@ RSpec.describe "Weather Acceptance", type: :request do
         expect(response.body).to include("Zip code is required")
       end
     end
+
+    context "when a full address is provided", :vcr do
+      it "extracts the zip code, fetches the forecast and displays the forecast details" do
+        get weather_path(zip_code: "10001 Main St, Los Angeles, CA 90210")
+
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include("Current Temperature")
+        expect(response.body).to include("Live Data")
+      end
+    end
   end
 end

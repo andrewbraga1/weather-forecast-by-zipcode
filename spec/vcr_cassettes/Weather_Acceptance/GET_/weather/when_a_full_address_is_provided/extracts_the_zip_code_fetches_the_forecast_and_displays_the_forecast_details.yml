@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://geocoding-api.open-meteo.com/v1/search?count=1&name=90210
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.15.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 Nov 2026 09:29:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '422'
+      Connection:
+      - keep-alive
+      X-Encoding-Time:
+      - 0.027060508728027344 ms
+      Cache-Control:
+      - public, max-age=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"results":[{"id":5328041,"name":"Beverly Hills","latitude":34.07362,"longitude":-118.40036,"elevation":79.0,"feature_code":"PPLX","country_code":"US","admin1_id":5332921,"admin2_id":5368381,"timezone":"America/Los_Angeles","population":34869,"postcodes":["90209","90210","90211","90212","90213"],"country_id":6252001,"country":"United
+        States","admin1":"California","admin2":"Los Angeles"}],"generationtime_ms":0.08070469}'
+  recorded_at: Mon, 16 Nov 2026 09:29:01 GMT
+- request:
+    method: get
+    uri: https://api.open-meteo.com/v1/forecast?current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&latitude=34.07362&longitude=-118.40036&timezone=auto
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.15.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 Nov 2026 09:29:01 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Ratelimit-Cost:
+      - '1.0'
+      X-Ratelimit-Limit:
+      - '600.0'
+      X-Ratelimit-Remaining:
+      - '599.0'
+      X-Ratelimit-Reset:
+      - '1794821392'
+      X-Ratelimit-Window:
+      - '60'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJsYXRpdHVkZSI6MzQuMDgyNTIzLCJsb25naXR1ZGUiOi0xMTguNDA3MTQsImdlbmVyYXRpb250aW1lX21zIjowLjEyMzI2MjQwNTM5NTUwNzgxLCJ1dGNfb2Zmc2V0X3NlY29uZHMiOi0yODgwMCwidGltZXpvbmUiOiJBbWVyaWNhL0xvc19BbmdlbGVzIiwidGltZXpvbmVfYWJicmV2aWF0aW9uIjoiR01ULTgiLCJlbGV2YXRpb24iOjgzLjAsImN1cnJlbnRfdW5pdHMiOnsidGltZSI6Imlzbzg2MDEiLCJpbnRlcnZhbCI6InNlY29uZHMiLCJ0ZW1wZXJhdHVyZV8ybSI6IsKwQyJ9LCJjdXJyZW50Ijp7InRpbWUiOiIyMDI2LTExLTE2VDAxOjE1IiwiaW50ZXJ2YWwiOjkwMCwidGVtcGVyYXR1cmVfMm0iOjE2LjN9LCJkYWlseV91bml0cyI6eyJ0aW1lIjoiaXNvODYwMSIsInRlbXBlcmF0dXJlXzJtX21heCI6IsKwQyIsInRlbXBlcmF0dXJlXzJtX21pbiI6IsKwQyJ9LCJkYWlseSI6eyJ0aW1lIjpbIjIwMjYtMTEtMTYiLCIyMDI2LTExLTE3IiwiMjAyNi0xMS0xOCIsIjIwMjYtMTEtMTkiLCIyMDI2LTExLTIwIiwiMjAyNi0xMS0yMSIsIjIwMjYtMTEtMjIiXSwidGVtcGVyYXR1cmVfMm1fbWF4IjpbMjAuNiwxOS44LDE4LjUsMTguOCwxOS4zLDE5LjAsMTguM10sInRlbXBlcmF0dXJlXzJtX21pbiI6WzEyLjksMTEuNSwxNS40LDE0LjcsMTMuNCwxNC41LDEyLjldfX0=
+  recorded_at: Mon, 16 Nov 2026 09:29:01 GMT
+recorded_with: VCR 6.4.1

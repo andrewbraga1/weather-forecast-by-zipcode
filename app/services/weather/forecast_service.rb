@@ -2,8 +2,9 @@ module Weather
   class ForecastService
     CACHE_TTL = 30.minutes
 
-    def initialize(zip_code, weather_client: Weather::V1::OpenMeteoClient.new, geocoding_client: Geocoding::V1::OpenMeteoClient.new)
-      @zip_code = zip_code
+    def initialize(zip_code_or_address, weather_client: Weather::V1::OpenMeteoClient.new, geocoding_client: Geocoding::V1::OpenMeteoClient.new)
+      @input = zip_code_or_address.to_s.strip
+      @zip_code = extract_zip_code(@input)
       @weather_client = weather_client
       @geocoding_client = geocoding_client
     end
@@ -22,6 +23,9 @@ module Weather
     end
 
     private
+    def extract_zip_code(input)
+      input.scan(/\b\d{5}\b/).last || input
+    end
 
     def cache_key
       "weather_forecast_#{@zip_code}"
