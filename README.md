@@ -169,7 +169,7 @@ Finished in 0.42 seconds (files took 1.45 seconds to load)
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/AndrewBraga/weather-forecast-by-zipcode.git
+git clone https://github.com/andrewbraga1/weather-forecast-by-zipcode.git
 cd weather-forecast-by-zipcode
 
 # 2. Install dependencies
